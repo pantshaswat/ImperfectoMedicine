@@ -5,7 +5,6 @@ import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
-import { Post } from "@/types";
 import { format } from "date-fns";
 
 const builder = imageUrlBuilder(client);
@@ -41,7 +40,7 @@ const PostComp = ({ post }: { post: SanityDocument }) => {
       height={60}
     />
   ) : (
-    <img
+    <Image
       className="rounded-full"
       src="/pic.webp"
       alt={post.author?.name || "author"}
