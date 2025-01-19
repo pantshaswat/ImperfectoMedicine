@@ -9,10 +9,19 @@ import { format } from "date-fns";
 
 const builder = imageUrlBuilder(client);
 
-// Defining custom components for PortableText
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+// Define proper types for the components
 const components = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: { value: SanityImage }) => {
       return (
         <Image
           src={builder.image(value.asset).width(1000).height(500).url()}
