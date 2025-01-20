@@ -10,7 +10,7 @@ export const client = createClient({
 })
 
 export const queries = {
-  getAllYears: `*[_type == "year"] {
+  getAllSections: `*[_type == "section"] {
     _id,
     name,
     slug,
@@ -40,7 +40,7 @@ export const queries = {
       }
     }
   }`,
-  getAllYearsSubjectsTopics: `*[_type == "year"] {
+  getAllSectionsSubjectsTopics: `*[_type == "section"] {
     _id,
     name,
     slug,

@@ -1,13 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { Year } from '@/types';
+import { Section } from '@/types';
 
 interface SearchFormProps {
-  years: Year[];
-  onSearch: (results: Year[]) => void;
+  sections: Section[];
+  onSearch: (results: Section[]) => void;
 }
 
-export default function SearchForm({ years, onSearch }: SearchFormProps) {
+export default function SearchForm({ sections, onSearch }: SearchFormProps) {
   const [query, setQuery] = useState('');
 
   const handleSearch = (event: React.FormEvent) => {
@@ -15,20 +15,20 @@ export default function SearchForm({ years, onSearch }: SearchFormProps) {
     const searchQuery = query.toLowerCase();
     
     if (!searchQuery.trim()) {
-      onSearch(years);
+      onSearch(sections);
       return;
     }
 
-    const results = years.map(year => ({
-      ...year,
-      subjects: year.subjects.filter(subject =>
+    const results = sections.map(section => ({
+      ...section,
+      subjects: section.subjects.filter(subject =>
         subject.name.toLowerCase().includes(searchQuery) ||
         subject.topics.some(topic =>
           topic.title.toLowerCase().includes(searchQuery) ||
           topic.description?.toLowerCase().includes(searchQuery)
         )
       )
-    })).filter(year => year.subjects.length > 0);
+    })).filter(section => section.subjects.length > 0);
 
     onSearch(results);
   };
@@ -36,7 +36,7 @@ export default function SearchForm({ years, onSearch }: SearchFormProps) {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
     if (!e.target.value.trim()) {
-      onSearch(years); // Reset to show all results when search is cleared
+      onSearch(sections); // Reset to show all results when search is cleared
     }
   };
 

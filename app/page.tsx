@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import SearchForm from '@/components/SearchForm';
 import { client, queries } from '@/sanity/lib/client';
-import { Year } from '@/types';
+import { Section } from '@/types';
 import Link from 'next/link';  
 export default function Home() {
-  const [years, setYears] = useState<Year[]>([]);
-  const [filteredYears, setFilteredYears] = useState<Year[]>([]);
+  const [sections, setSections] = useState<Section[]>([]);
+  const [filteredSections, setFilteredSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [openTopicId, setOpenTopicId] = useState<string | null>(null);
@@ -15,12 +15,12 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await client.fetch(queries.getAllYears);
+        const result = await client.fetch(queries.getAllSections);
         if (Array.isArray(result)) {
           result.reverse();
         }
-        setYears(result);
-        setFilteredYears(result);
+        setSections(result);
+        setFilteredSections(result);
         setLoading(false);
       } catch (err) {
         setError('Failed to load content');
@@ -31,8 +31,8 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const handleSearchResults = (results: Year[]) => {
-    setFilteredYears(results);
+  const handleSearchResults = (results: Section[]) => {
+    setFilteredSections(results);
   };
 
   const toggleDropdown = (topicId: string) => {
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-4">Imperfecto Medicine!</h1>
           <p className="text-xl mb-8">Share and access high-quality medical study notes</p>
-          <SearchForm years={years} onSearch={handleSearchResults} />
+          <SearchForm sections={sections} onSearch={handleSearchResults} />
         </div>
       </div>
 
@@ -73,10 +73,10 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle>
-                {years.reduce(
-                  (acc, year) =>
+                {sections?.reduce(
+                  (acc, section) =>
                     acc +
-                    year.subjects.reduce(
+                    section.subjects.reduce(
                       (subAcc, subject) =>
                         subAcc +
                         subject.topics.reduce(
@@ -95,10 +95,10 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle>
-                {years.reduce(
-                  (acc, year) =>
+                {sections?.reduce(
+                  (acc, section) =>
                     acc +
-                    year.subjects.reduce(
+                    section.subjects.reduce(
                       (subAcc, subject) => subAcc + subject.topics.length,
                       0
                     ),
@@ -113,8 +113,8 @@ export default function Home() {
             <CardHeader>
               <CardTitle>
                 {new Set(
-                  years.flatMap((year) =>
-                    year.subjects.flatMap((subject) =>
+                  sections?.flatMap((section) =>
+                    section.subjects.flatMap((subject) =>
                       subject.topics.flatMap((topic) =>
                         topic.posts.map((post) => post.author.name)
                       )
@@ -131,14 +131,14 @@ export default function Home() {
         {/* Topics Section */}
         <h2 className="text-2xl font-bold mb-6">MBBS Study Materials</h2>
         <div className="space-y-8">
-          {filteredYears.map((year) => (
-            <div key={year._id} className="space-y-4">
-              <h3 className="text-xl font-semibold text-blue-600">{year.name}</h3>
-              {year.description && (
-                <p className="text-gray-600">{year.description}</p>
+          {filteredSections?.map((section) => (
+            <div key={section._id} className="space-y-4">
+              <h3 className="text-xl font-semibold text-blue-600">{section.name}</h3>
+              {section.description && (
+                <p className="text-gray-600">{section.description}</p>
               )}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {year.subjects.map((subject) => (
+                {section?.subjects?.map((subject) => (
                   <Card key={subject._id} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <CardTitle className="text-lg">{subject.name}</CardTitle>

@@ -32,7 +32,7 @@ export interface Author {
     topics: Topic[]
   }
   
-  export interface Year {
+  export interface Section {
     _id: string
     name: string
     slug: { current: string }

@@ -1,9 +1,9 @@
 import {TagIcon} from '@sanity/icons'
 import {defineField, defineType, defineArrayMember} from 'sanity'
 
-export const yearType = defineType({
-  name: 'year',
-  title: 'Year',
+export const sectionType = defineType({
+  name: 'section',
+  title: 'Section',
   type: 'document',
   icon: TagIcon,
   fields: [

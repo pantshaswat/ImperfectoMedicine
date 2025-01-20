@@ -13,7 +13,7 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title('Academic Structure')
             .items([
-              S.documentTypeListItem('year').title('Years').icon(CalendarIcon),
+              S.documentTypeListItem('section').title('Sections').icon(CalendarIcon),
               S.documentTypeListItem('subject').title('Subjects').icon(BookIcon),
               S.documentTypeListItem('topic').title('Topics'),
             ]),
@@ -22,6 +22,6 @@ export const structure: StructureResolver = (S) =>
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() &&
-          !['post', 'author', 'year', 'subject', 'topic'].includes(item.getId()!),
+          !['post', 'author', 'section', 'subject', 'topic'].includes(item.getId()!),
       ),
     ]);
