@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ImperfectoMedicine - Medical Notes Platform
 
-## Getting Started
+A comprehensive medical notes and blog platform built for MBBS students, providing structured access to medical education content. This platform is built using Next.js and Sanity CMS, offering a modern, responsive, and user-friendly interface for accessing medical notes.
 
-First, run the development server:
+## 🏗️ Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The project follows a hierarchical content structure:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Sections**: Top-level categorization of medical content
+- **Subjects**: Specific medical subjects (e.g., Anatomy, Physiology, Biochemistry)
+- **Topics**: Individual topics within each subject
+- **Posts**: Detailed notes and articles covering specific topics
+- **Authors**: Medical professionals and educators who contribute content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend**: Next.js
+- **CMS**: Sanity.io
+- **Content Structure**: Custom schema types for medical education
+- **Styling**: Modern UI components and responsive design
 
-## Learn More
+## 📚 Content Organization
 
-To learn more about Next.js, take a look at the following resources:
+The platform organizes medical content in a structured hierarchy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Academic Structure**
+   - Sections (e.g., Pre-clinical, Clinical)
+   - Subjects (e.g., Anatomy, Physiology)
+   - Topics (specific areas within subjects)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Content Types**
+   - Posts: Detailed notes and articles
+   - Authors: Medical professionals and educators
+   - Categories: Content categorization
+   - Block Content: Rich text content with formatting
 
-## Deploy on Vercel
+## 🚀 Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Hierarchical content organization
+- Rich text editing capabilities
+- Author management system
+- Responsive design for all devices
+- SEO-friendly content structure
+- Easy content management through Sanity Studio
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏁 Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version)
+- npm or yarn
+- Sanity CLI
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/pantshaswat/ImperfectoMedicine
+   cd medical-notes
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file with your Sanity project credentials:
+   ```
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+
+SANITY_STUDIO_PROJECT_ID=
+SANITY_STUDIO_DATASET=
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Access Sanity Studio:
+   ```bash
+   npm run sanity dev
+   # or
+   yarn sanity dev
+   ```
+
+## 📝 Content Management
+
+The platform uses Sanity Studio for content management, allowing:
+
+- Easy creation and editing of medical notes
+- Management of authors and contributors
+- Organization of content into sections, subjects, and topics
+- Rich text editing with medical-specific formatting
+- Image management with proper attribution
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Built for MBBS students and medical educators
+- Special thanks to the medical community for their valuable input
+- Powered by Next.js and Sanity.io
