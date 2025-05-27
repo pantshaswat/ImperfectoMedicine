@@ -69,11 +69,12 @@ The platform organizes medical content in a structured hierarchy:
 3. Set up environment variables:
    Create a `.env.local` file with your Sanity project credentials:
    ```
-NEXT_PUBLIC_SANITY_PROJECT_ID=
-NEXT_PUBLIC_SANITY_DATASET=
+        NEXT_PUBLIC_SANITY_PROJECT_ID
+        NEXT_PUBLIC_SANITY_DATASET
 
-SANITY_STUDIO_PROJECT_ID=
-SANITY_STUDIO_DATASET=
+        SANITY_STUDIO_PROJECT_ID
+        SANITY_STUDIO_DATASET
+
    ```
 
 4. Run the development server:
